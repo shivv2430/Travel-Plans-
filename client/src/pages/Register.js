@@ -45,6 +45,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
 
@@ -474,8 +475,14 @@ const Register = () => {
       >
         <Box sx={{ maxWidth: 480, width: "100%" }}>
           <Box sx={{ position: "relative", textAlign: "center", mb: 4 }}>
-
-            <Box sx={{position: "absolute",left: { xs: 0, sm: -20, md: -50, lg: -80 },top: 0,}} >  
+            {/* Back to Home */}
+            <Box
+              sx={{
+                position: "absolute",
+                left: { xs: 0, sm: -20, md: -50, lg: -80 },
+                top: 0,
+              }}
+            >
               <Link
                 component={RouterLink}
                 to="/"
@@ -491,7 +498,8 @@ const Register = () => {
                   borderColor: "divider",
                   backgroundColor: "background.paper",
                   textDecoration: "none",
-                  transition: "0.2s ease","&:hover": {backgroundColor: "action.hover",},
+                  transition: "0.2s ease",
+                  "&:hover": { backgroundColor: "action.hover" },
                 }}
               >
                 <ArrowBackIcon sx={{ mr: 0.5, fontSize: 18 }} />
