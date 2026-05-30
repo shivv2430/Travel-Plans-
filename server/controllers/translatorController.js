@@ -30,7 +30,7 @@ const SUPPORTED_LANGUAGES = [
   { code: "uk", name: "Ukrainian" },
 ];
 
-const supportedLanguages = SUPPORTED_LANGUAGES.map(lang => lang.code);
+const supportedLanguages = SUPPORTED_LANGUAGES.map((lang) => lang.code);
 // @desc    Translate text
 // @route   POST /api/translator/translate
 // @access  Public
@@ -38,8 +38,8 @@ exports.translateText = async (req, res) => {
   try {
     const { text, sourceLanguage, targetLanguage } = req.body;
 
-    supportedLanguages.includes(targetLanguage)
-      
+    supportedLanguages.includes(targetLanguage);
+
     const sanitizedText = typeof text === "string" ? text.trim() : "";
     if (!sanitizedText || !targetLanguage) {
       return res.status(400).json({
@@ -51,17 +51,22 @@ exports.translateText = async (req, res) => {
         msg: "Invalid target language code",
       });
     }
-    if (sourceLanguage && sourceLanguage !== "auto" &&!supportedLanguages.includes(sourceLanguage)) {
-        return res.status(400).json({
-          msg: "Invalid source language code",
-        });
-      }
+    if (
+      sourceLanguage &&
+      sourceLanguage !== "auto" &&
+      !supportedLanguages.includes(sourceLanguage)
+    ) {
+      return res.status(400).json({
+        msg: "Invalid source language code",
+      });
+    }
 
     const MAX_TEXT_LENGTH = 5000;
     if (sanitizedText.length > MAX_TEXT_LENGTH) {
       return res.status(413).json({
-        msg: `Text exceeds maximum length of ${MAX_TEXT_LENGTH} characters`,});
-      }
+        msg: `Text exceeds maximum length of ${MAX_TEXT_LENGTH} characters`,
+      });
+    }
 
     const options = { to: targetLanguage };
     if (sourceLanguage && sourceLanguage !== "auto") {
@@ -76,23 +81,23 @@ exports.translateText = async (req, res) => {
       sourceLanguage: sourceLanguage || "auto",
       targetLanguage,
     });
-  }catch (err) {
+  } catch (err) {
     console.error("Translation error:", err);
-    
+
     if (err.code === "BAD_REQUEST") {
       return res.status(400).json({
-      msg: "Invalid translation request",
-    });
-  }
+        msg: "Invalid translation request",
+      });
+    }
     if (err.code === "ETIMEDOUT") {
       return res.status(504).json({
-      msg: "Translation service timed out",
+        msg: "Translation service timed out",
+      });
+    }
+    return res.status(500).json({
+      msg: "Translation failed due to server error",
     });
   }
-     return res.status(500).json({
-    msg: "Translation failed due to server error",
-  });
-}
 };
 
 // @desc    Get supported languages
