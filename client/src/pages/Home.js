@@ -358,7 +358,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [where, setWhere] = useState("");
   const [checkIn, setCheckIn] = useState("");
-  const [travellers, setTravellers] = useState("");
+  const [adults, setAdults] = useState("");
+  const [children, setChildren] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -653,13 +654,39 @@ const Home = () => {
             </div>
           </div>
           <div className="wander-sf">
-            <div className="wander-sf-label">Travellers</div>
-            <input
-              className="wander-sf-val"
-              placeholder="2 Adults, 1 Child"
-              value={travellers}
-              onChange={(e) => setTravellers(e.target.value)}
-            />
+            <div className="wander-sf-label">Number of Travellers</div>
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              <select
+                className="wander-sf-val"
+                value={adults}
+                onChange={(e) => setAdults(e.target.value)}
+                style={{ flex: 1, paddingRight: "1rem" }}
+              >
+                <option value="" disabled hidden>
+                  adults 🔽
+                </option>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                  <option key={n} value={n}>
+                    {n} {n === 1 ? "Adult" : "Adults"}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="wander-sf-val"
+                value={children}
+                onChange={(e) => setChildren(e.target.value)}
+                style={{ flex: 1, paddingRight: "1rem" }}
+              >
+                <option value="" disabled hidden>
+                  children 🔽
+                </option>
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                  <option key={n} value={n}>
+                    {n} {n === 1 ? "Child" : "Children"}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           <button type="submit" className="wander-search-btn">
             <SearchIcon /> Search

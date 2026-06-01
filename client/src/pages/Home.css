@@ -338,7 +338,7 @@ html {
   border-radius: 16px;
   box-shadow: 0 12px 48px rgba(15, 45, 64, 0.14);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-columns: 1fr 1fr 1.5fr auto;
   overflow: hidden;
   border: 0.5px solid rgba(26, 74, 107, 0.1);
 }
@@ -382,6 +382,24 @@ html {
 .wander-sf input::placeholder {
   color: #bdc8d0;
   font-weight: 400;
+}
+
+.wander-sf select {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--ocean);
+  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 1.5rem;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231a4a6b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
 }
 
 .wander-search-btn {
@@ -1003,6 +1021,7 @@ html {
     flex-direction: column;
     width: 100%;
   }
+
   .wander-btn-primary,
   .wander-btn-ghost {
     width: 100%;
@@ -1016,7 +1035,8 @@ html {
 .wander-page .wander-search-bar {
   display: flex !important;
   flex-direction: row !important;
-  grid-template-columns: none !important; /* Disables the broken grid grid structure */
+  grid-template-columns: none !important;
+  /* Disables the broken grid grid structure */
   align-items: center !important;
   justify-content: space-between !important;
   padding: 0 !important;
@@ -1056,7 +1076,7 @@ html {
   border: none !important;
   outline: none !important;
   font-size: 0.95rem !important;
-  color: #1a4a6b !important;
+  color: #a8aaab !important;
   font-weight: 500 !important;
   background: transparent !important;
   padding: 0 !important;
@@ -1098,12 +1118,15 @@ html {
   .wander-page .wander-search-bar {
     flex-wrap: wrap !important;
   }
+
   .wander-page .wander-sf {
     flex: 1 1 calc(50% - 1px) !important;
   }
+
   .wander-page .wander-sf:nth-child(2) {
     border-right: none !important;
   }
+
   .wander-page .wander-search-btn {
     flex: 1 1 100% !important;
     height: 56px !important;
@@ -1114,6 +1137,7 @@ html {
   .wander-page .wander-search-bar {
     flex-direction: column !important;
   }
+
   .wander-page .wander-sf {
     flex: 1 1 100% !important;
     width: 100% !important;
@@ -1121,6 +1145,7 @@ html {
     border-bottom: 1px solid rgba(26, 74, 107, 0.08) !important;
     padding: 1.2rem 1.5rem !important;
   }
+
   .wander-page .wander-search-btn {
     height: 52px !important;
   }
